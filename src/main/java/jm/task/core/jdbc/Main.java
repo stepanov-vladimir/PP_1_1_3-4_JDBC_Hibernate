@@ -40,7 +40,7 @@ public class Main {
             userService.dropUsersTable();
 
             transaction.commit();
-        } catch (Exception throwables) {
+        } catch (Exception exception) {
             if (transaction != null) {
                 transaction.rollback();
             }

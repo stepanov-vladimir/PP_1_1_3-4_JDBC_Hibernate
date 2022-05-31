@@ -24,6 +24,11 @@ public class UserDaoHibernateImpl implements UserDao {
             DROP TABLE IF EXISTS user;
             """;
 
+    private static final String SELECT_ALL_USERS_HQL = """
+                    SELECT u
+                      FROM User u
+                    """;
+
     private static final SessionFactory sessionFactory = Util.getSessionFactory();
 
     private static Transaction transaction = null;
@@ -101,13 +106,10 @@ public class UserDaoHibernateImpl implements UserDao {
     @Override
     public List<User> getAllUsers() {
         try (var session = getSession()) {
-            var cb = session.getCriteriaBuilder();
+            transaction = session.beginTransaction();
 
-            var criteria = cb.createQuery(User.class);
-            var user = criteria.from(User.class);
-            criteria.select(user);
+            return session.createQuery(SELECT_ALL_USERS_HQL, User.class).getResultList();
 
-            return session.createQuery(criteria).list();
         } catch (Exception throwables) {
             if (transaction != null) {
                 transaction.rollback();

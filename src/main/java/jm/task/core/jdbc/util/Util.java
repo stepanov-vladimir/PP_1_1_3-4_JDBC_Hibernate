@@ -16,6 +16,9 @@ import org.hibernate.service.ServiceRegistry;
 
 public class Util {
 
+    private Util() {
+    }
+
     // Hibernate config
     private static SessionFactory sessionFactory;
     public static SessionFactory getSessionFactory() {
@@ -47,14 +50,11 @@ public class Util {
         }
         return sessionFactory;
     }
-
     // JDBC config
     private static final String USERNAME_KEY = "root";
     private static final String PASSWORD_KEY = "root";
-    private static final String URL_KEY = "jdbc:mysql://localhost:3306/database1";
 
-    private Util() {
-    }
+    private static final String URL_KEY = "jdbc:mysql://localhost:3306/database1";
 
     public static Connection open() {
         try {
