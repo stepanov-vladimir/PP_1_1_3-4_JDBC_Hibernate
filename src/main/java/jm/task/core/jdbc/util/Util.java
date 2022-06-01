@@ -1,6 +1,5 @@
 package jm.task.core.jdbc.util;
 
-import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.model.User;
 
 import java.sql.Connection;
@@ -50,6 +49,7 @@ public class Util {
         }
         return sessionFactory;
     }
+
     // JDBC config
     private static final String USERNAME_KEY = "root";
     private static final String PASSWORD_KEY = "root";
@@ -66,7 +66,5 @@ public class Util {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
-
 }

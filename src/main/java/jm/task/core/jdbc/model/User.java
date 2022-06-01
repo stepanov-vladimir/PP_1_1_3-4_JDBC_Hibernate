@@ -7,7 +7,7 @@ import java.util.Objects;
 
 @Builder
 @Entity
-@Table(name = "user", schema = "database1")
+//@Table(name = "user", schema = "database1")
 public class User {
 
     @Id
