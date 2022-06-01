@@ -123,7 +123,7 @@ public class UserDaoHibernateImpl implements UserDao {
         try (var session = getSession()) {
             transaction = session.beginTransaction();
 
-            session.createQuery("DELETE FROM " + User.class.getSimpleName()).executeUpdate();
+            session.createQuery("DELETE FROM User").executeUpdate();
 
             transaction.commit();
         } catch (Exception throwables) {
